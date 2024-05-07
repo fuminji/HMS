@@ -1,0 +1,47 @@
+﻿@model List<HMS.Web.Models.Domain.NewsPost>
+@{
+
+}
+<div class="container col-xxl-8  py-2">
+    <div class="d-flex justify-content-between">
+        <div class="col-12 col-lg-6 d-flex justify-content-between">
+            <h3 class=" fw-bold lh-1 mb-3">
+                Latest News!
+            </h3>
+        </div>
+        
+
+
+     
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var newsPost in Model)
+            {
+                <div class="col-md-6">
+                    <div class="mb-5 bg-light box-shadow p-5">
+                        <img src="@newsPost.FeaturedImageUrl" alt="@newsPost.Heading" class="mb-2 d-block img-fluid" />
+
+                        <h2 class="mb-4">@newsPost.Heading</h2>
+
+                        <p class="mb-4">
+                            @newsPost.ShortDescription
+                        </p>
+
+                        <a class="btn btn-dark"
+                           asp-area=""
+                           asp-controller="News"
+                           asp-action="Index"
+                           asp-route-urlHandle="@newsPost.UrlHandle">Read More</a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
